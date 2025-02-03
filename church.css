@@ -18,6 +18,35 @@ body{
 }
 
 
+.examp{
+  background-image: url(images/image5.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  animation: changes 100s infinite ease-in-out;
+
+}
+@keyframes changes {
+  0%{
+    background-image: url(images/image5.jpeg) ;
+  }
+  20%{
+    background-image: url(images/image4.jpeg) ;
+  }
+  40%{
+    background-image: url(images/image3.jpeg) ;
+  }
+  60%{
+    background-image: url(images/image2.jpeg) ;
+  }
+  80%{
+    background-image: url(images/image1.jpeg) ;
+  }
+  
+}
 .nav-bar{
   transition: 0.5;
   background-color: rgba(236, 221, 221, 0.082);
