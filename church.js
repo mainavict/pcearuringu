@@ -98,8 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             prevTranslate = currentIndex * -slider.offsetWidth;
         }
     });
-
-    setInterval(showNextCard,10000);
 });
 buggericon();
 
