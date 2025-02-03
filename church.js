@@ -1,36 +1,106 @@
-cardSlider();
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.slider');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const cards = document.querySelectorAll('.card');
+    let currentIndex = 0;
 
-function cardSlider(){document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.querySelector('.slider');
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  const cards = document.querySelectorAll('.card');
-  let currentIndex = 0;
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
 
-  function updateSlider() {
-      slider.style.transform = `translateX(-${currentIndex * 70}%)`;
-  }
+    function showNextCard() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateSlider();
+    }
 
-  function showNextCard() {
-    
-      currentIndex = (currentIndex + 1) % cards.length;
-      console.log(cards.length);
+    function showPrevCard() {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateSlider();
+    }
 
-      updateSlider();
-  }
+    nextButton.addEventListener('click', showNextCard);
+    prevButton.addEventListener('click', showPrevCard);
 
-  function showPrevCard() {
-      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-      updateSlider();
-  }
+    // Enable touch scrolling
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
 
-  nextButton.addEventListener('click', showNextCard);
-  prevButton.addEventListener('click', showPrevCard);
+    slider.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startPos = e.clientX;
+        slider.style.transition = 'none';
+    });
 
-  
-  setInterval(showNextCard, 10000);
+    slider.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            const currentPosition = e.clientX;
+            currentTranslate = prevTranslate + currentPosition - startPos;
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+        }
+    });
+
+    slider.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            const movedBy = currentTranslate - prevTranslate;
+
+            if (movedBy < -100 && currentIndex < cards.length - 1) {
+                currentIndex += 1;
+            } else if (movedBy > 100 && currentIndex > 0) {
+                currentIndex -= 1;
+            }
+
+            updateSlider();
+            slider.style.transition = 'transform 0.5s ease-in-out';
+            prevTranslate = currentIndex * -slider.offsetWidth;
+        }
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            updateSlider();
+            slider.style.transition = 'transform 0.5s ease-in-out';
+        }
+    });
+
+    // Touch events for mobile devices
+    slider.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startPos = e.touches[0].clientX;
+        slider.style.transition = 'none';
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            const currentPosition = e.touches[0].clientX;
+            currentTranslate = prevTranslate + currentPosition - startPos;
+            slider.style.transform = `translateX(${currentTranslate}px)`;
+        }
+    });
+
+    slider.addEventListener('touchend', () => {
+        if (isDragging) {
+            isDragging = false;
+            const movedBy = currentTranslate - prevTranslate;
+
+            if (movedBy < -100 && currentIndex < cards.length - 1) {
+                currentIndex += 1;
+            } else if (movedBy > 100 && currentIndex > 0) {
+                currentIndex -= 1;
+            }
+
+            updateSlider();
+            slider.style.transition = 'transform 0.5s ease-in-out';
+            prevTranslate = currentIndex * -slider.offsetWidth;
+        }
+    });
+
+    setInterval(showNextCard,10000);
 });
-}
 buggericon();
 
 function  buggericon(){

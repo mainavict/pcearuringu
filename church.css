@@ -261,10 +261,12 @@ font-family: lobster;
 
 .slider-container {
   position: relative;
-  max-width: 50%;
-  margin: 0 auto;
+  width: 70%; /* Set the container to 50% width */
+  margin: 0 auto; /* Center the container horizontally */
   overflow: hidden;
-  height: 300px;
+  margin-bottom: 50px;
+  padding: 20px;
+ 
 }
 
 .slider {
@@ -272,42 +274,46 @@ font-family: lobster;
   transition: transform 0.5s ease-in-out;
   width: 300px; 
   padding-left: 40px;
-
 }
 
 .card {
-  flex: 0 0 100%;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
+  flex: 0 0 100%; /* Each card takes up 100% of the slider container width */
+  box-sizing: border-box;
+  padding: 50px;
   text-align: center;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  transition: 0.5s;
+  opacity: 0.7;
+  transition: transform 0.3s ease-in-out;
   height: 250px;
-  transition: transform 0.3s ease;
 }
+
 .card:hover{
+  opacity: 1;
   transform: scale(1.2);
 }
+
 
 .prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .prev {
-  left: 0px;
+  left: 10px;
 }
 
 .next {
-  right: 0px;
+  right: 10px;
 }
 h1, h2 {
   text-align: center;
@@ -525,7 +531,7 @@ margin: 0px 5px;
   
   .slider-container {
     position: relative;
-    max-width: 800px;
+    width: 90%;
     margin: 0 auto;
     overflow: hidden;
   }
@@ -536,13 +542,14 @@ margin: 0px 5px;
   }
   
   .card {
-    flex: 0 0 100%;
+    flex: 0 0 80%;
     background-color: Soft White;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
     text-align: center;
+    opacity: 1;
   }
   
   .prev, .next {
