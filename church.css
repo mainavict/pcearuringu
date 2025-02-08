@@ -18,7 +18,7 @@ body{
 }
 
 
-.examp{
+.nar-container{
   background-image: url(images/image5.jpeg);
   background-position: center;
   background-repeat: no-repeat;
@@ -46,6 +46,58 @@ body{
     background-image: url(images/image1.jpeg) ;
   }
   
+}
+.slider-container{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+ 
+}
+
+.slider{
+  border-radius: 10px;
+  width: 70%;
+  gap: 4px;
+  margin-top: 5px;
+  display: grid;
+  grid-auto-flow: column;
+  scroll-behavior: auto;
+  gap: 1.2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: mandatory;
+  scrollbar-width: none;
+
+}
+.slider::-webkit-scrollbar{
+  display: none;
+}
+
+.card{
+  margin-top: 5px;
+  scroll-snap-align: start;
+  border-radius: 30px;
+  height: 200px;
+  width: 400px;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+.card:hover{
+  transform: scale(1.07);
+  z-index: 1;
+}
+
+
+.card:nth-child(odd){
+  background-image: linear-gradient(135deg, #ced4da 0%, #1e3c72 28%, #2a5298 86%, #ced4da 100%);
+}
+.card:nth-child(even){
+  background-image: linear-gradient(135deg, #ced4da 8%, #1e3c72 23%, #2a5298 56%, #748ffc 74%, #ced4da 100%);
 }
 .nav-bar{
   transition: 0.5;
@@ -259,69 +311,6 @@ font-family: lobster;
 }
 
 
-.slider-container {
-  position: relative;
-  width: 70%; /* Set the container to 50% width */
-  margin: 0 auto; /* Center the container horizontally */
-  overflow: hidden;
-  margin-bottom: 50px;
-  padding: 20px;
- 
-}
-
-.slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 300px; 
-  padding-left: 40px;
-}
-
-.card {
-  flex: 0 0 100%; /* Each card takes up 100% of the slider container width */
-  box-sizing: border-box;
-  padding: 50px;
-  text-align: center;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  margin-right: 10px;
-  transition: 0.5s;
-  opacity: 0.7;
-  transition: transform 0.3s ease-in-out;
-  height: 250px;
-}
-
-.card:hover{
-  opacity: 1;
-  transform: scale(1.2);
-}
-
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-h1, h2 {
-  text-align: center;
-}
-
-
-
-
 .location-container {
   max-width: 1500px;
   margin: 0 auto;
@@ -465,7 +454,7 @@ margin: 0px 5px;
     flex-direction: column;
   }
   .footernav ul li{
-    width: 100%;
+    width: auto;
     text-align: center;
     margin: 10px;
   }
@@ -473,8 +462,53 @@ margin: 0px 5px;
 
 
 @media screen  and (max-width:1000px){
-  .examp{
+  .slider-container{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+   
+  }
+  
+  .slider{
+    border-radius: 10px;
+    width: 90%;
+    gap: 4px;
+    margin-top: 5px;
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 1.2rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-snap-type: mandatory;
+    scrollbar-width: none;
+  
+  }
+  .slider::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .card{
+    margin-top: 5px;
+    scroll-snap-align: start;
+    border-radius: 30px;
+    height: 300px;
+    width: 200px;
+    color: white;
+    background-color: aqua;
+    transition: transform 0.3s ease-in-out;
+  }
+  .card:hover{
+    transform: scale(1.03);
+  }
+  .nar-container{
     height: 70vh;
+    z-index: 3;
   }
   .header-container h1{
    font-size: 3em;
@@ -529,56 +563,6 @@ margin: 0px 5px;
   
   }
   
-  .slider-container {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .card {
-    flex: 0 0 80%;
-    background-color: Soft White;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-    opacity: 1;
-  }
-  
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  .prev {
-    left: 10px;
-  }
-  
-  .next {
-    right: 10px;
-  }
-  h1, h2 {
-    text-align: center;
-  }
-  
-
-
-
-
   iframe{
     width: 100%;
   }
